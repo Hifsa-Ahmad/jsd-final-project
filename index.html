@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="#"><!-- no favicon error -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Destination 101 Project</title>
     <script src="js/axios.min.js"></script>
     <script src="js/main.js"></script>
 </head>
 <body>
+    <div class="topContainer">
+        <div class="bannerHeader">
+            <h1> Destinations 101 </h1>
+            <h3> Your adventure starts here ... </h3> 
+        </div>
+
+        <div class="formContainer">
+            <form id="searchForm">  
+                <input type="text" id="locationQuery" placeholder="Search your destination">
+                <button id="submitButton"> Search </button>
+                <p class ="loadMessage"> Loading results </p>
+              </form>
+        </div>
+
+        <div class="weatherContainer">
+            <p> Current Weather to Show Here </p>
+            <h2> 5º C</h2>
+        </div>
+    </div>
+
+    <div class="searchContainer">
+        <p> Search Results Divs to Show here </p>
+    </div>
+
+    <div class="aboutMe">
+        <h3> About Section </h3>
+        <p> Information about website goes here </p>
+    </div>
     
 </body>
 </html>
