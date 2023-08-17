@@ -137,8 +137,10 @@ body {
 
 .restuarantList {
     border: 1px solid black;
+    border-radius: 10%;
+    margin: 1rem;
     padding: 2rem;
-    background: rgb(225, 181, 98);
+    background: rgb(200, 212, 243);
     text-align: justify;
 
 }

@@ -20,7 +20,7 @@ Shows current weather by geo-location
 
 * Adding a feature to show details of individual resturant, hotel or attraction
 
-* showing destination weather via longitude and latitude information in AJAX request
+* Refactor code to make it DRY
 
 * Navigation
 

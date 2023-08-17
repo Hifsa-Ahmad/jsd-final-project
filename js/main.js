@@ -5,6 +5,7 @@ const searchFormNode = document.querySelector('#searchForm');
 const userSearchInput = document.querySelector('#locationQuery');
 const resultsParent = document.querySelector('.searchResults');
 const secondParent = document.querySelector('.secondaryResults');
+const destinationWeather = document.querySelector('#destinationWeather');
 
 let long;
 let lat;
@@ -26,24 +27,6 @@ window.addEventListener('load',() => {
     console.log("Geolocation is not supported by this browser.");
     }
 });     // load current weather on browser load via geo location
-
-function getCurrentWeather (lat,long) {
-    axios
-    .get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${long}?key=PHJP3AFRWNKN7VEXS93ABLQU6`)
-    .then( res =>{
-        const tempCurr = parseInt(((res.data.days[0].temp)-32)*(5/9));
-
-           currentWeather.innerHTML = `
-           <h3> ${res.data.timezone} </h3> <br /> 
-           <h1> ${tempCurr} º C </h1>`         
-
-    })
-    .catch(err =>{
-        console.warn('Error loading search results:', err);
-    });
-
-
-} //Current Weather - API
 
 
 searchFormNode.addEventListener('submit', ev => {
@@ -128,6 +111,7 @@ resultsParent.addEventListener('click', ev => {
     locationLatitude = ev.target.dataset.lat;
     locationLongitude=ev.target.dataset.long;
     
+    getCurrentWeather (locationLatitude,locationLongitude);
     
     //if for details visible to be completed//
 
@@ -206,7 +190,43 @@ const createDivFunction = (divId, innerText) => {
 
 
 
+function getCurrentWeather (lat,long) {
+    axios
+    .get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${long}?key=PHJP3AFRWNKN7VEXS93ABLQU6`)
+    .then( res =>{
+        const tempCurr = parseInt(((res.data.days[0].temp)-32)*(5/9));
 
+           currentWeather.innerHTML = `
+           <h3> ${res.data.timezone} </h3> <br /> 
+           <h1> ${tempCurr} º C </h1>`         
+
+    })
+    .catch(err =>{
+        console.warn('Error loading search results:', err);
+    });
+
+
+} //Current Weather - API
+
+function getdestinationWeather (lat,long) {
+    axios
+    .get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${long}?key=PHJP3AFRWNKN7VEXS93ABLQU6`)
+    .then( res =>{
+        const tempDest = parseInt(((res.data.days[0].temp)-32)*(5/9));
+        
+        currentWeather.replaceChildren();
+
+           destinationWeather.innerHTML = `
+           <h3> ${res.data.timezone} </h3> <br /> 
+           <h1> ${tempDest} º C </h1>`         
+
+    })
+    .catch(err =>{
+        console.warn('Error loading search results:', err);
+    });
+
+
+} //Current Weather - API
 
 // Test only:
 
