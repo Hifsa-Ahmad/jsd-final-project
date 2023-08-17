@@ -157,14 +157,16 @@ const renderResturantList = (result) => {
 
         const restuarantListDiv = document.createElement ('div');
 
-        restuarantListDiv.id = element.location_id;
-        restuarantListDiv.className='restuarantList';
-        restuarantListDiv.innerHTML= `
-        <h4>${element.name}</h4><br />
-        <h5>${element.address}</h5><br />
-        <img src='${element.photo.images.small.url}'>
-        <p> ${element.description}</p>
-        `,
+        
+            restuarantListDiv.id = element.location_id;
+            restuarantListDiv.className='restuarantList';
+            restuarantListDiv.innerHTML= `
+            <h4>${element.name}</h4><br />
+            <h5>${element.address}</h5><br />
+            <img src='${element.photo.images.small.url}'>
+            <p> ${element.description}</p>
+            `,
+        
 
         secondParent.appendChild(restuarantListDiv);
     })
