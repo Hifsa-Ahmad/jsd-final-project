@@ -32,6 +32,7 @@ searchFormNode.addEventListener('submit', ev => {
     ev.preventDefault();
   
     resultsParent.replaceChildren();
+    secondParent.replaceChildren();
     fetchSearchParams(userSearchInput.value);
     console.log(userSearchInput.value);
   })        // event listner on form to handle form-submit
