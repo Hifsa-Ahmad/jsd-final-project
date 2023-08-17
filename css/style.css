@@ -1,33 +1,127 @@
+body {
+    background-color: rgb(203, 245, 241);
+
+}
+
+.bannerHeader {
+    grid-area: header;
+  }
+  .formContainer {
+    grid-area: main;
+  }
+  .weatherContainer {
+    grid-area: sidebar;
+  }
+
+.topContainer{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "header header header header"
+    "main main . sidebar"
+    
+}
+
+
 .bannerHeader {
     border: 1px solid black;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: linear-gradient(bottom, rgb(196, 180, 36), rgba(235, 141, 65, 0.6));
+    background: -webkit-linear-gradient(bottom, rgb(196, 180, 36,1), rgba(235, 141, 65,.6));
+    background: -moz-linear-gradient(bottom, rgb(196, 180, 36,1), rgba(235, 141, 65,.6));
     padding: 10px;
 }
+
 
 .formContainer {
     border: 1px solid black;
     padding: 15px 15px 10px 10px;
     height: 1gi00px;
+    background: linear-gradient(bottom, rgb(235, 83, 12), rgba(241, 241, 238, 0.6));
+    background: -webkit-linear-gradient(bottom, rgb(235, 83 12,1), rgba(241, 241, 238,.6));
+    background: -moz-linear-gradient(bottom, rgb(235, 83, 12,1), rgba(241, 241, 238,.6));
         
 }
 
+
 .weatherContainer {
     border: 1px solid black;
-    padding: 15px;   
+    padding: 15px;  
+    background: linear-gradient(bottom, rgb(155, 100, 232,1), rgba(155, 241, 238, 0.6));
+    background: -webkit-linear-gradient(bottom, rgb(155, 100, 232,1), rgba(155, 241, 238,.6));
+    background: -moz-linear-gradient(bottom, rgb(155, 100, 232,1), rgba(155, 241, 238,.6)); 
 
 }
 
 .searchResults{
     border: 1px solid black;
     display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+    padding: 2rem;
 }
 
 .secondaryResults {
-    display:grid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 2rem;
+    text-align:center;
+}
+
+.locationResults {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    text-align: justify;
+    color: rgb(10, 2, 20);
+    background-size: cover;
+    height:200px;
+    width: 200px;
     cursor: pointer;
 }
 
-.locationResults{
-    cursor: pointer;
+#WhatTo {
+    height: 200px;
+    width: 200px;
+    background: linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238, 0.6));
+    background: -webkit-linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238,.6));
+    background: -moz-linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238,.6)); 
+    color: white;
+
 }
 
+#restuarantSearchDiv {
+    height: 200px;
+    width: 200px;
+    background: linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238, 0.6));
+    background: -webkit-linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238,.6));
+    background: -moz-linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238,.6)); 
+    color: darkblue;
+    border: 2px solid navy;
+    cursor: pointer;
+
+}
+
+#hotelsSearchDiv {
+    height: 200px;
+    width: 200px;
+    background: linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238, 0.6));
+    background: -webkit-linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238,.6));
+    background: -moz-linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238,.6)); 
+    color: darkblue;
+    border: 2px solid navy;
+    cursor: pointer;
+
+}
+
+#attractionsSearch {
+    height: 200px;
+    width: 200px;
+    background: linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238, 0.6));
+    background: -webkit-linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238,.6));
+    background: -moz-linear-gradient(bottom, rgb(3, 18, 50,1), rgba(155, 241, 238,.6)); 
+    color: darkblue;
+    border: 2px solid navy;
+    cursor: pointer;
+
+}
 

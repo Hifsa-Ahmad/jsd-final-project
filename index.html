@@ -8,6 +8,7 @@
     <script src="js/axios.min.js" defer></script>
     <script src="js/main.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
     <div class="topContainer">
@@ -16,18 +17,23 @@
             <h3> Your adventure starts here ... </h3> 
         </div>
 
+        <div class="weatherContainer">
+            <div id="currentWeather">
+                <p> Current Weather </p>
+                <h1> 5º C</h1>
+            </div>
+            <div id="destinationWeather"></div>
+        </div>
+
         <div class="formContainer">
+            <p>Enter destination</p>
             <form id="searchForm">  
                 <input type="text" id="locationQuery" placeholder="Search your destination">
                 <button id="submitButton"> Search </button>
-                <p class ="loadMessage"> Loading results </p>
+                <!-- <p class ="loadMessage"> Loading results </p> -->
               </form>
         </div>
 
-        <div class="weatherContainer">
-            <p> Current Weather to Show Here </p>
-            <h2> 5º C</h2>
-        </div>
     </div>
 
     <div class="searchResults"></div>

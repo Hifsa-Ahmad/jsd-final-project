@@ -1,16 +1,20 @@
 console.log ('Hello from final project', axios);
 
-//Current Weather - getting geolocation from browser
+// window.addEventListener('load',() => {
+//     let long;
+//     let lat;
 
-// if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       const latitude = position.coords.latitude;
-//       const longitude = position.coords.longitude;
-//       console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-//     });
-//   } else {
+//     if (navigator.geolocation) {
+//             navigator.geolocation.getCurrentPosition(position => {
+//               lat = position.coords.latitude;
+//               long = position.coords.longitude;
+//               console.log(`Latitude: ${lat}, Longitude: ${long}`);
+//             });
+//     } else {
 //     console.log("Geolocation is not supported by this browser.");
-//   }
+//     }
+
+// }); //Current Weather - getting geolocation from browser
 
 const searchFormNode = document.querySelector('#searchForm');
 const userSearchInput = document.querySelector('#locationQuery');
@@ -18,53 +22,21 @@ const resultsParent = document.querySelector('.searchResults');
 const secondParent = document.querySelector('.secondaryResults');
 
 
+
 let locationId;
 let locationLatitude;
 let locationLongitude;
 
 searchFormNode.addEventListener('submit', ev => {
-    console.log ('Form Submitted!');
+    //console.log ('Form Submitted!');
     ev.preventDefault();
   
-    //Remember to replace children when all of this is working//
+    resultsParent.replaceChildren();
     fetchSearchParams(userSearchInput.value);
     console.log(userSearchInput.value);
   })        // event listner on form to handle form-submit
 
 
-resultsParent.addEventListener('click', ev => {
-
-    console.log ('id', ev.target.id);
-
-    resultsParent.replaceChildren();
-
-    const divWhatTo = createDivFunction('WhatTo', 'Look for:' );
-    const divRestuarants = createDivFunction('restuarantSearchDiv', 'Restuarants');
-    const divHotels = createDivFunction('hotelsSearchDiv', 'Hotels');
-    const divAttractions = createDivFunction('attractionsSearch', 'Attractions');
-
-    secondParent.appendChild(divWhatTo);
-    secondParent.appendChild(divRestuarants);
-    secondParent.appendChild(divHotels);
-    secondParent.appendChild(divAttractions);
-
-    locationId = ev.target.id;
-    locationLatitude = ev.target.dataset.lat;
-    locationLongitude=ev.target.dataset.long;
-    
-    
-    //if for details visible to be completed//
-
-});         // event listener to progress to secondary-search
-
-secondParent.addEventListener('click', ev => {
-    console.log ('element clicked', ev.target.id);
-
-    secondParent.replaceChildren();
-
-    //fetchRestuarantList(locationId);
-
-});
 
 function fetchSearchParams (searchText) {
     axios
@@ -92,27 +64,64 @@ function fetchSearchParams (searchText) {
 }               // function with AJAX request to get basic parameters for desitnation searched
 
 const renderSearchResults = (results) => {
+   
     results.forEach(element => {
         if(element.result_type==="geos"){
 
             // console.log(element.result_object.location_id);
-            const locationSearchDiv = document.createElement('div');
-
+            const locationSearchDiv = document.createElement('div')
+            
             locationSearchDiv.id = element.result_object.location_id;
             locationSearchDiv.className = 'locationResults';
             locationSearchDiv.dataset.lat = element.result_object.latitude;
             locationSearchDiv.dataset.long = element.result_object.longitude;
             locationSearchDiv.dataset.dest = element.result_object.name;
             locationSearchDiv.innerHTML = `<h3>${element.result_object.name}</h3>
-            <p>${element.result_object.location_string}</p>`;
-            locationSearchDiv.style.backgroundImage = `url(${element.result_object.photo.images.medium.url})`;
-
+                <p>${element.result_object.location_string}</p>`;
+            locationSearchDiv.style.backgroundImage = `url(${element.result_object. photo.images.medium.url})`;
+           
             resultsParent.appendChild(locationSearchDiv);
+            
         }
     });
 
 
 }              // function to display search results for destination searched
+
+resultsParent.addEventListener('click', ev => {
+
+    console.log ('id', ev.target.id);
+
+    resultsParent.replaceChildren();
+
+    const divWhatTo = createDivFunction('WhatTo', 'Look for:' );
+    const divRestuarants = createDivFunction('restuarantSearchDiv', 'Restuarants');
+    const divHotels = createDivFunction('hotelsSearchDiv', 'Hotels');
+    const divAttractions = createDivFunction('attractionsSearch', 'Attractions');
+
+    secondParent.appendChild(divWhatTo);
+    secondParent.appendChild(divRestuarants);
+    secondParent.appendChild(divHotels);
+    secondParent.appendChild(divAttractions);
+
+    locationId = ev.target.id;
+    locationLatitude = ev.target.dataset.lat;
+    locationLongitude=ev.target.dataset.long;
+    
+    
+    //if for details visible to be completed//
+
+});         // event listener to progress to secondary-search
+
+
+secondParent.addEventListener('click', ev => {
+    console.log ('element clicked', ev.target);
+
+    secondParent.replaceChildren();
+
+    fetchRestuarantList(locationId);
+
+}); // secondary search event listener
 
 function fetchRestuarantList (location) {
     axios
@@ -170,6 +179,7 @@ const createDivFunction = (divId, innerText) => {
 
     return divCreated;
 }                       // function to create interim divs after location selection
+
 
 
 
