@@ -22,7 +22,13 @@ Enter your search results and choose to look for details about Restuarants, Hote
 
 * showing destination weather via longitude and latitude information in AJAX request
 
+* Navigation
+
+* Improving CSS grids
+
 ## Known Bugs
 
 * Adding async - await or similar feature for each promise and callback.
+
+* Missing data in JSON requests
 

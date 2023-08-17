@@ -78,7 +78,7 @@ const renderSearchResults = (results) => {
             locationSearchDiv.dataset.long = element.result_object.longitude;
             locationSearchDiv.dataset.dest = element.result_object.name;
             locationSearchDiv.innerHTML = `<h3>${element.result_object.name}</h3>
-                <p>${element.result_object.location_string}</p>`;
+                <p id="titles">${element.result_object.location_string}</p>`;
             locationSearchDiv.style.backgroundImage = `url(${element.result_object. photo.images.medium.url})`;
            
             resultsParent.appendChild(locationSearchDiv);
@@ -154,22 +154,24 @@ function fetchRestuarantList (location) {
 
 const renderResturantList = (result) => {
     result.forEach(element => {
+    
+        if (element.name && element.photo){
 
-        const restuarantListDiv = document.createElement ('div');
+            const restuarantListDiv = document.createElement ('div');
+            
+                restuarantListDiv.id = element.location_id;
+                restuarantListDiv.className='restuarantList';
+            
+                restuarantListDiv.innerHTML= `
+                <h4>${element.name}</h4><br />
+                <h5>${element.address}</h5><br />
+                <img src='${element.photo.images.small.url}'>
+                <p> ${element.description}</p>
+                `,
 
-        
-            restuarantListDiv.id = element.location_id;
-            restuarantListDiv.className='restuarantList';
-            restuarantListDiv.innerHTML= `
-            <h4>${element.name}</h4><br />
-            <h5>${element.address}</h5><br />
-            <img src='${element.photo.images.small.url}'>
-            <p> ${element.description}</p>
-            `,
-        
-
-        secondParent.appendChild(restuarantListDiv);
-    })
+            secondParent.appendChild(restuarantListDiv);
+        }
+    });
 
 }           // function to display search results for resturants at the destination
 

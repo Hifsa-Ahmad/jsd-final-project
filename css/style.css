@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(203, 245, 241);
+    background-color: rgb(243, 233, 215);
 
 }
 
@@ -19,7 +19,7 @@ body {
     grid-template-rows: auto;
     grid-template-areas:
     "header header header header"
-    "main main . sidebar"
+    "main main main sidebar"
     
 }
 
@@ -69,14 +69,24 @@ body {
 }
 
 .locationResults {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: medium;
-    text-align: justify;
-    color: rgb(10, 2, 20);
+    
     background-size: cover;
-    height:200px;
-    width: 200px;
     cursor: pointer;
+}
+
+#titles{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
+    text-align: left;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    color: white;
+    background: linear-gradient(bottom, rgba(0,0,0,0.8), rgba(0,0,0,.4));
+    background: -webkit-linear-gradient(bottom, rgba(0,0,0,0.8), rgba(0,0,0,.4));
+    background: -moz-linear-gradient(bottom, rgba(0,0,0,0.8), rgba(0,0,0,.4));
+    height: 80px;
+    width: 200px
 }
 
 #WhatTo {
@@ -126,7 +136,7 @@ body {
 }
 
 .restuarantList {
-    border: 1px solid black
-    
+    border: 1px solid black;
+    background: rgb(225, 181, 98);
 
 }
