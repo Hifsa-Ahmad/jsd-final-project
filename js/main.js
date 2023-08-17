@@ -1,31 +1,50 @@
 console.log ('Hello from final project', axios);
 
-// window.addEventListener('load',() => {
-//     let long;
-//     let lat;
-
-//     if (navigator.geolocation) {
-//             navigator.geolocation.getCurrentPosition(position => {
-//               lat = position.coords.latitude;
-//               long = position.coords.longitude;
-//               console.log(`Latitude: ${lat}, Longitude: ${long}`);
-//             });
-//     } else {
-//     console.log("Geolocation is not supported by this browser.");
-//     }
-
-// }); //Current Weather - getting geolocation from browser
-
+const currentWeather = document.querySelector('#currentWeather');
 const searchFormNode = document.querySelector('#searchForm');
 const userSearchInput = document.querySelector('#locationQuery');
 const resultsParent = document.querySelector('.searchResults');
 const secondParent = document.querySelector('.secondaryResults');
 
-
-
+let long;
+let lat;
 let locationId;
 let locationLatitude;
 let locationLongitude;
+
+window.addEventListener('load',() => {
+   
+
+    if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+              lat = position.coords.latitude;
+              long = position.coords.longitude;
+              console.log(`Latitude: ${lat}, Longitude: ${long}`);
+              getCurrentWeather (lat, long);
+            });
+    } else {
+    console.log("Geolocation is not supported by this browser.");
+    }
+});     // load current weather on browser load via geo location
+
+function getCurrentWeather (lat,long) {
+    axios
+    .get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${long}?key=PHJP3AFRWNKN7VEXS93ABLQU6`)
+    .then( res =>{
+        const tempCurr = parseInt(((res.data.days[0].temp)-32)*(5/9));
+
+           currentWeather.innerHTML = `
+           <h3> ${res.data.timezone} </h3> <br /> 
+           <h1> ${tempCurr} º C </h1>`         
+
+    })
+    .catch(err =>{
+        console.warn('Error loading search results:', err);
+    });
+
+
+} //Current Weather - API
+
 
 searchFormNode.addEventListener('submit', ev => {
     //console.log ('Form Submitted!');
@@ -163,7 +182,7 @@ const renderResturantList = (result) => {
                 restuarantListDiv.className='restuarantList';
             
                 restuarantListDiv.innerHTML= `
-                <h4>${element.name}</h4><br />
+                <h3>${element.name}</h3><br />
                 <h5>${element.address}</h5><br />
                 <img src='${element.photo.images.small.url}'>
                 <p> ${element.description}</p>
